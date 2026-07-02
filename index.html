@@ -107,8 +107,6 @@
             border-radius: 10px;
             padding: 15px;
             display: none;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
         }
 
         .week-detail.active {
@@ -298,6 +296,212 @@
             font-size: 0.85em;
         }
 
+        /* ===== 暑假作业打卡模块 ===== */
+        .homework-section {
+            background: rgba(255,255,255,0.95);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .overview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .overview-header h2 {
+            margin: 0;
+            font-size: 1.3em;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .overview-header .toggle-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+            color: #667eea;
+        }
+
+        .overview-header.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .overview-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .overview-content.active {
+            display: block;
+        }
+
+        .homework-section h2 {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .homework-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+        }
+
+        .homework-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .homework-table th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .homework-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: middle;
+        }
+
+        .homework-table tbody tr:hover {
+            background: #f6ffed;
+            transition: background 0.3s;
+        }
+
+        .homework-table .subject-cell {
+            font-weight: bold;
+            font-size: 1.1em;
+            white-space: nowrap;
+            width: 8%;
+            background: #fafafa;
+        }
+
+        .homework-table .content-cell {
+            width: 35%;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .homework-table .check-cell {
+            width: 35%;
+        }
+
+        .homework-table .progress-cell {
+            width: 22%;
+            text-align: center;
+        }
+
+        /* 进度条样式 */
+        .progress-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .progress-btn:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .progress-btn:active {
+            transform: scale(0.9);
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 0.9em;
+            min-width: 40px;
+            text-align: right;
+        }
+
+        /* 方框样式 */
+        .checkbox-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-box {
+            width: 22px;
+            height: 22px;
+            border: 2px solid #d9d9d9;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .checkbox-box.checked {
+            background: #667eea;
+            border-color: #667eea;
+        }
+
+        .checkbox-box.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .checkbox-label {
+            font-size: 0.85em;
+            color: #666;
+        }
+
         /* ===== 学科总览模块 ===== */
         .overview-section {
             background: rgba(255,255,255,0.95);
@@ -373,24 +577,59 @@
             border-bottom: 1px solid #f0f0f0;
         }
 
+        /* ===== 月度课程表（可折叠） ===== */
         .month-section {
             margin-bottom: 30px;
         }
 
-        .month-title {
+        .month-header {
             background: rgba(255,255,255,0.95);
             padding: 15px 25px;
-            border-radius: 15px 15px 0 0;
+            border-radius: 15px;
             font-size: 1.5em;
             font-weight: bold;
             color: #333;
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .month-header:hover {
+            background: white;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .month-header .month-title-left {
+            display: flex;
+            align-items: center;
             gap: 10px;
         }
 
-        .month-title .month-icon {
+        .month-header .month-icon {
             font-size: 1.3em;
+        }
+
+        .month-header .toggle-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+            color: #667eea;
+        }
+
+        .month-header.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .month-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .month-content.active {
+            display: block;
         }
 
         .schedule-table {
@@ -518,11 +757,42 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .stats-section h2 {
+        .stats-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .stats-header h2 {
             text-align: center;
             color: #333;
-            margin-bottom: 20px;
+            margin: 0;
             font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stats-header .toggle-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+            color: #667eea;
+        }
+
+        .stats-header.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .stats-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .stats-content.active {
+            display: block;
         }
 
         .stats-bar {
@@ -670,21 +940,21 @@
             .week-view-cell {
                 display: table-cell;
                 width: 13%;
-                min-height: 55px;
-                height: 55px;
+                min-height: 70px;
+                height: auto;
                 padding: 2px;
                 vertical-align: top;
+                overflow: visible;
             }
 
             .week-view-cell .course-tag {
-                font-size: 0.55em;
-                padding: 2px 2px;
-                line-height: 1.2;
-                margin-bottom: 2px;
-            }
-
-            .week-view-cell .course-tag:last-child {
-                margin-bottom: 0;
+                font-size: 0.5em;
+                padding: 1px 2px;
+                line-height: 1.15;
+                margin-bottom: 1px;
+                word-break: break-all;
+                overflow: visible;
+                max-width: 100%;
             }
 
             .week-view-cell .course-tag .icon {
@@ -709,7 +979,53 @@
                 font-size: 1em;
             }
 
-            /* 学科总览：保持表格，缩小字体 */
+            /* 作业打卡模块 */
+            .homework-section {
+                padding: 15px;
+            }
+
+            .homework-section h2 {
+                font-size: 1.1em;
+            }
+
+            .homework-table {
+                font-size: 0.8em;
+            }
+
+            .homework-table th,
+            .homework-table td {
+                padding: 8px 10px;
+            }
+
+            .homework-table .subject-cell {
+                font-size: 1em;
+            }
+
+            .progress-btn {
+                width: 24px;
+                height: 24px;
+                font-size: 0.9em;
+            }
+
+            .progress-bar {
+                height: 16px;
+            }
+
+            .progress-text {
+                font-size: 0.8em;
+                min-width: 35px;
+            }
+
+            .checkbox-box {
+                width: 20px;
+                height: 20px;
+            }
+
+            .checkbox-label {
+                font-size: 0.8em;
+            }
+
+            /* 学科总览 */
             .overview-section {
                 padding: 15px;
             }
@@ -719,12 +1035,12 @@
             }
 
             .overview-table {
-                font-size: 0.75em;
+                font-size: 0.8em;
             }
 
             .overview-table th,
             .overview-table td {
-                padding: 6px 8px;
+                padding: 8px 10px;
                 line-height: 1.4;
             }
 
@@ -732,10 +1048,15 @@
                 font-size: 1em;
             }
 
-            /* 月度表格：保持表格，横向滚动 */
+            /* 月度表格 */
             .month-section {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
+            }
+
+            .month-header {
+                font-size: 1.2em;
+                padding: 12px 15px;
             }
 
             .schedule-table {
@@ -791,10 +1112,6 @@
 
             .stat-number {
                 font-size: 1.6em;
-            }
-
-            .stat-label {
-                font-size: 0.75em;
             }
 
             .stats-detail {
@@ -853,23 +1170,39 @@
 
             .week-view-cell {
                 width: 13%;
-                min-height: 50px;
-                height: 50px;
+                min-height: 65px;
+                height: auto;
                 padding: 2px;
             }
 
             .week-view-cell .course-tag {
-                font-size: 0.5em;
-                padding: 1px 2px;
+                font-size: 0.45em;
+                padding: 1px 1px;
+                line-height: 1.1;
             }
 
-            .overview-table {
-                font-size: 0.7em;
+            .homework-table {
+                font-size: 0.75em;
             }
 
-            .overview-table th,
-            .overview-table td {
-                padding: 5px 6px;
+            .homework-table th,
+            .homework-table td {
+                padding: 6px 8px;
+            }
+
+            .progress-btn {
+                width: 22px;
+                height: 22px;
+                font-size: 0.8em;
+            }
+
+            .progress-bar {
+                height: 14px;
+            }
+
+            .checkbox-box {
+                width: 18px;
+                height: 18px;
             }
 
             .schedule-table {
@@ -897,6 +1230,61 @@
             .stats-detail {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* 独立折叠模块样式 */
+        .foldable-section {
+            margin-bottom: 25px;
+        }
+
+        .foldable-header {
+            background: rgba(255,255,255,0.95);
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .foldable-header:hover {
+            background: white;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+
+        .foldable-title-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .foldable-icon {
+            font-size: 1.3em;
+        }
+
+        .foldable-toggle-icon {
+            font-size: 1.2em;
+            transition: transform 0.3s;
+            color: #667eea;
+        }
+
+        .foldable-header.collapsed .foldable-toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .foldable-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .foldable-content.active {
+            display: block;
         }
 
         .footer {
@@ -2121,14 +2509,165 @@
             </div>
         </div>
 
-        <!-- ===== 学科总览模块 ===== -->
-        <div class="overview-section">
-            <h2>📋 暑假学科总览</h2>
+        <!-- ===== 暑假作业打卡模块 ===== -->
+        <div class="homework-section">
+            <h2>📝 暑假作业打卡</h2>
+            <table class="homework-table">
+                <thead>
+                    <tr>
+                        <th style="width: 8%">学科</th>
+                        <th style="width: 35%">作业内容</th>
+                        <th style="width: 35%">打卡</th>
+                        <th style="width: 22%">总进度</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="subject-cell" rowspan="5">📖 语文</td>
+                        <td class="content-cell">25篇课外阅读训练</td>
+                        <td class="check-cell">
+                            <div class="progress-bar-container">
+                                <button class="progress-btn" onclick="updateProgress('reading25', -1, 25)">-</button>
+                                <div class="progress-bar"><div class="progress-fill" id="reading25-bar" style="width: 0%"></div></div>
+                                <button class="progress-btn" onclick="updateProgress('reading25', 1, 25)">+</button>
+                            </div>
+                        </td>
+                        <td class="progress-cell"><span class="progress-text" id="reading25-text">0%</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-cell">2篇作文</td>
+                        <td class="check-cell">
+                            <div class="checkbox-group">
+                                <div class="checkbox-item" onclick="toggleCheckbox('essay1')">
+                                    <div class="checkbox-box" id="essay1"></div>
+                                    <span class="checkbox-label">作文1</span>
+                                </div>
+                                <div class="checkbox-item" onclick="toggleCheckbox('essay2')">
+                                    <div class="checkbox-box" id="essay2"></div>
+                                    <span class="checkbox-label">作文2</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="progress-cell"><span class="progress-text" id="essay-text">0%</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-cell">背诵6上诗词和日积月累</td>
+                        <td class="check-cell">
+                            <div class="progress-bar-container">
+                                <button class="progress-btn" onclick="updateProgress('recite', -1, 17)">-</button>
+                                <div class="progress-bar"><div class="progress-fill" id="recite-bar" style="width: 0%"></div></div>
+                                <button class="progress-btn" onclick="updateProgress('recite', 1, 17)">+</button>
+                            </div>
+                        </td>
+                        <td class="progress-cell"><span class="progress-text" id="recite-text">0%</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-cell">阅读3本必读：小英雄雨来、童年、爱的教育</td>
+                        <td class="check-cell">
+                            <div class="checkbox-group">
+                                <div class="checkbox-item" onclick="toggleCheckbox('book1')">
+                                    <div class="checkbox-box" id="book1"></div>
+                                    <span class="checkbox-label">小英雄雨来</span>
+                                </div>
+                                <div class="checkbox-item" onclick="toggleCheckbox('book2')">
+                                    <div class="checkbox-box" id="book2"></div>
+                                    <span class="checkbox-label">童年</span>
+                                </div>
+                                <div class="checkbox-item" onclick="toggleCheckbox('book3')">
+                                    <div class="checkbox-box" id="book3"></div>
+                                    <span class="checkbox-label">爱的教育</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="progress-cell"><span class="progress-text" id="book-text">0%</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-cell">阅读3本自选</td>
+                        <td class="check-cell">
+                            <div class="checkbox-group">
+                                <div class="checkbox-item" onclick="toggleCheckbox('self1')">
+                                    <div class="checkbox-box" id="self1"></div>
+                                    <span class="checkbox-label">自选1</span>
+                                </div>
+                                <div class="checkbox-item" onclick="toggleCheckbox('self2')">
+                                    <div class="checkbox-box" id="self2"></div>
+                                    <span class="checkbox-label">自选2</span>
+                                </div>
+                                <div class="checkbox-item" onclick="toggleCheckbox('self3')">
+                                    <div class="checkbox-box" id="self3"></div>
+                                    <span class="checkbox-label">自选3</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="progress-cell"><span class="progress-text" id="self-text">0%</span></td>
+                    </tr>
+                    <tr>
+                        <td class="subject-cell">🔢 数学</td>
+                        <td class="content-cell">口算打卡</td>
+                        <td class="check-cell">
+                            <div class="progress-bar-container">
+                                <button class="progress-btn" onclick="updateProgress('math', -1, 30)">-</button>
+                                <div class="progress-bar"><div class="progress-fill" id="math-bar" style="width: 0%"></div></div>
+                                <button class="progress-btn" onclick="updateProgress('math', 1, 30)">+</button>
+                            </div>
+                        </td>
+                        <td class="progress-cell"><span class="progress-text" id="math-text">0%</span></td>
+                    </tr>
+                    <tr>
+                        <td class="subject-cell" rowspan="3">🌍 英语</td>
+                        <td class="content-cell">预习6上</td>
+                        <td class="check-cell">
+                            <div class="progress-bar-container">
+                                <button class="progress-btn" onclick="updateProgress('english', -1, 30)">-</button>
+                                <div class="progress-bar"><div class="progress-fill" id="english-bar" style="width: 0%"></div></div>
+                                <button class="progress-btn" onclick="updateProgress('english', 1, 30)">+</button>
+                            </div>
+                        </td>
+                        <td class="progress-cell"><span class="progress-text" id="english-text">0%</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-cell">多维阅读9级</td>
+                        <td class="check-cell">
+                            <div class="progress-bar-container">
+                                <button class="progress-btn" onclick="updateProgress('multi', -1, 15)">-</button>
+                                <div class="progress-bar"><div class="progress-fill" id="multi-bar" style="width: 0%"></div></div>
+                                <button class="progress-btn" onclick="updateProgress('multi', 1, 15)">+</button>
+                            </div>
+                        </td>
+                        <td class="progress-cell"><span class="progress-text" id="multi-text">0%</span></td>
+                    </tr>
+                    <tr>
+                        <td class="content-cell">非遗手抄报</td>
+                        <td class="check-cell">
+                            <div class="checkbox-group">
+                                <div class="checkbox-item" onclick="toggleCheckbox('handwork')">
+                                    <div class="checkbox-box" id="handwork"></div>
+                                    <span class="checkbox-label">完成</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="progress-cell"><span class="progress-text" id="handwork-text">0%</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== 学科总览模块（可折叠） ===== -->
+        <div class="foldable-section">
+            <div class="foldable-header collapsed" onclick="toggleOverview()">
+                <div class="foldable-title-left">
+                    <span class="foldable-icon">📋</span>
+                    暑假学科总览
+                </div>
+                <span class="foldable-toggle-icon">▼</span>
+            </div>
+            <div class="foldable-content" id="overview-content">
+            <div class="overview-section">
             <table class="overview-table">
                 <thead>
                     <tr>
                         <th style="width: 8%">学科</th>
-                        <th style="width: 42%">可选时间 / 可选时间段</th>
+                        <th style="width: 42%">可选时间/可选时间段</th>
                         <th style="width: 50%">实际安排（时间+频率）</th>
                     </tr>
                 </thead>
@@ -2175,583 +2714,602 @@
         </div>
 
         <div class="month-section">
-            <div class="month-title">
-                <span class="month-icon">☀️</span>
-                6月课程安排
+            <div class="month-header " onclick="toggleMonth('month-6')">
+                <div class="month-title-left">
+                    <span class="month-icon">☀️</span>
+                    6月课程安排
+                </div>
+                <span class="toggle-icon">▼</span>
             </div>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th style="width: 12%">日期</th>
-                        <th style="width: 8%">星期</th>
-                        <th style="width: 27%">上午</th>
-                        <th style="width: 27%">下午</th>
-                        <th style="width: 26%">晚上</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="month-content active" id="month-6">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 12%">日期</th>
+                            <th style="width: 8%">星期</th>
+                            <th style="width: 27%">上午</th>
+                            <th style="width: 27%">下午</th>
+                            <th style="width: 26%">晚上</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    <tr class="">
-                        <td class="date-cell">06月29日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>9-10am阅读录播课</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>8:30-9pm久趣英语</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">06月29日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>9-10am阅读录播课</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>8:30-9pm久趣英语</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">06月30日</td>
-                        <td class="weekday-cell ">周二</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">06月30日</td>
+                            <td class="weekday-cell ">周二</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="month-section">
-            <div class="month-title">
-                <span class="month-icon">🌻</span>
-                7月课程安排
+            <div class="month-header" onclick="toggleMonth('month-7')">
+                <div class="month-title-left">
+                    <span class="month-icon">🌻</span>
+                    7月课程安排
+                </div>
+                <span class="toggle-icon">▼</span>
             </div>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th style="width: 12%">日期</th>
-                        <th style="width: 8%">星期</th>
-                        <th style="width: 27%">上午</th>
-                        <th style="width: 27%">下午</th>
-                        <th style="width: 26%">晚上</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="month-content " id="month-7">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 12%">日期</th>
+                            <th style="width: 8%">星期</th>
+                            <th style="width: 27%">上午</th>
+                            <th style="width: 27%">下午</th>
+                            <th style="width: 26%">晚上</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    <tr class="">
-                        <td class="date-cell">07月01日</td>
-                        <td class="weekday-cell ">周三</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9-11am奥数(家)</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月01日</td>
+                            <td class="weekday-cell ">周三</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9-11am奥数(家)</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月02日</td>
-                        <td class="weekday-cell ">周四</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>8:30-9pm久趣英语</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月02日</td>
+                            <td class="weekday-cell ">周四</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>8:30-9pm久趣英语</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月03日</td>
-                        <td class="weekday-cell ">周五</td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>10:40-12:10am速写考级辅导</div></div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>2-3:30pm速写考级辅导</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月03日</td>
+                            <td class="weekday-cell ">周五</td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>10:40-12:10am速写考级辅导</div></div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>2-3:30pm速写考级辅导</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">07月04日</td>
-                        <td class="weekday-cell weekday-weekend">周六</td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>10:40-12:10am速写考级辅导</div></div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>2-3:30pm速写考级辅导</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">07月04日</td>
+                            <td class="weekday-cell weekday-weekend">周六</td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>10:40-12:10am速写考级辅导</div></div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>2-3:30pm速写考级辅导</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">07月05日</td>
-                        <td class="weekday-cell weekday-weekend">周日</td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>速写考级</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm央美辅导</div></div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">07月05日</td>
+                            <td class="weekday-cell weekday-weekend">周日</td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>速写考级</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm央美辅导</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月06日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm央美辅导</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月06日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm央美辅导</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月07日</td>
-                        <td class="weekday-cell ">周二</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm央美辅导</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月07日</td>
+                            <td class="weekday-cell ">周二</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm央美辅导</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月08日</td>
-                        <td class="weekday-cell ">周三</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>7-8pm阅读直播课</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月08日</td>
+                            <td class="weekday-cell ">周三</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>7-8pm阅读直播课</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月09日</td>
-                        <td class="weekday-cell ">周四</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月09日</td>
+                            <td class="weekday-cell ">周四</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月10日</td>
-                        <td class="weekday-cell ">周五</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月10日</td>
+                            <td class="weekday-cell ">周五</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">07月11日</td>
-                        <td class="weekday-cell weekday-weekend">周六</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">07月11日</td>
+                            <td class="weekday-cell weekday-weekend">周六</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">07月12日</td>
-                        <td class="weekday-cell weekday-weekend">周日</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">07月12日</td>
+                            <td class="weekday-cell weekday-weekend">周日</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月13日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
-                        <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>阅读录播课</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月13日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
+                            <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>阅读录播课</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月14日</td>
-                        <td class="weekday-cell ">周二</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月14日</td>
+                            <td class="weekday-cell ">周二</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月15日</td>
-                        <td class="weekday-cell ">周三</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月15日</td>
+                            <td class="weekday-cell ">周三</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月16日</td>
-                        <td class="weekday-cell ">周四</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月16日</td>
+                            <td class="weekday-cell ">周四</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月17日</td>
-                        <td class="weekday-cell ">周五</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月17日</td>
+                            <td class="weekday-cell ">周五</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">07月18日</td>
-                        <td class="weekday-cell weekday-weekend">周六</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">07月18日</td>
+                            <td class="weekday-cell weekday-weekend">周六</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">07月19日</td>
-                        <td class="weekday-cell weekday-weekend">周日</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">07月19日</td>
+                            <td class="weekday-cell weekday-weekend">周日</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月20日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月20日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月21日</td>
-                        <td class="weekday-cell ">周二</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月21日</td>
+                            <td class="weekday-cell ">周二</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月22日</td>
-                        <td class="weekday-cell ">周三</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>7-8pm阅读直播课</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月22日</td>
+                            <td class="weekday-cell ">周三</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>7-8pm阅读直播课</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月23日</td>
-                        <td class="weekday-cell ">周四</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月23日</td>
+                            <td class="weekday-cell ">周四</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月24日</td>
-                        <td class="weekday-cell ">周五</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月24日</td>
+                            <td class="weekday-cell ">周五</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">07月25日</td>
-                        <td class="weekday-cell weekday-weekend">周六</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">07月25日</td>
+                            <td class="weekday-cell weekday-weekend">周六</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">07月26日</td>
-                        <td class="weekday-cell weekday-weekend">周日</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">07月26日</td>
+                            <td class="weekday-cell weekday-weekend">周日</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月27日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
-                        <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>阅读录播课</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月27日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
+                            <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>阅读录播课</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月28日</td>
-                        <td class="weekday-cell ">周二</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月28日</td>
+                            <td class="weekday-cell ">周二</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月29日</td>
-                        <td class="weekday-cell ">周三</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月29日</td>
+                            <td class="weekday-cell ">周三</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月30日</td>
-                        <td class="weekday-cell ">周四</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月30日</td>
+                            <td class="weekday-cell ">周四</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>1-3pm奥数(家)</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">07月31日</td>
-                        <td class="weekday-cell ">周五</td>
-                        <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">07月31日</td>
+                            <td class="weekday-cell ">周五</td>
+                            <td><div class="course-list"><div class="course-item math"><span class="course-icon">🔢</span>9:30-12:30am奥数刷题</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="month-section">
-            <div class="month-title">
-                <span class="month-icon">🍂</span>
-                8月课程安排
+            <div class="month-header" onclick="toggleMonth('month-8')">
+                <div class="month-title-left">
+                    <span class="month-icon">🍂</span>
+                    8月课程安排
+                </div>
+                <span class="toggle-icon">▼</span>
             </div>
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th style="width: 12%">日期</th>
-                        <th style="width: 8%">星期</th>
-                        <th style="width: 27%">上午</th>
-                        <th style="width: 27%">下午</th>
-                        <th style="width: 26%">晚上</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="month-content " id="month-8">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 12%">日期</th>
+                            <th style="width: 8%">星期</th>
+                            <th style="width: 27%">上午</th>
+                            <th style="width: 27%">下午</th>
+                            <th style="width: 26%">晚上</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月01日</td>
-                        <td class="weekday-cell weekday-weekend">周六</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月01日</td>
+                            <td class="weekday-cell weekday-weekend">周六</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月02日</td>
-                        <td class="weekday-cell weekday-weekend">周日</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月02日</td>
+                            <td class="weekday-cell weekday-weekend">周日</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月03日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月03日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月04日</td>
-                        <td class="weekday-cell ">周二</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月04日</td>
+                            <td class="weekday-cell ">周二</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item art"><span class="course-icon">🎨</span>5:30-8:30pm素描集训</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月05日</td>
-                        <td class="weekday-cell ">周三</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>7-8pm阅读直播课</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月05日</td>
+                            <td class="weekday-cell ">周三</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>7-8pm阅读直播课</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月06日</td>
-                        <td class="weekday-cell ">周四</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月06日</td>
+                            <td class="weekday-cell ">周四</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月07日</td>
-                        <td class="weekday-cell ">周五</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月07日</td>
+                            <td class="weekday-cell ">周五</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月08日</td>
-                        <td class="weekday-cell weekday-weekend">周六</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月08日</td>
+                            <td class="weekday-cell weekday-weekend">周六</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月09日</td>
-                        <td class="weekday-cell weekday-weekend">周日</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月09日</td>
+                            <td class="weekday-cell weekday-weekend">周日</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月10日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>阅读录播课</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月10日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>阅读录播课</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月11日</td>
-                        <td class="weekday-cell ">周二</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月11日</td>
+                            <td class="weekday-cell ">周二</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月12日</td>
-                        <td class="weekday-cell ">周三</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月12日</td>
+                            <td class="weekday-cell ">周三</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月13日</td>
-                        <td class="weekday-cell ">周四</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月13日</td>
+                            <td class="weekday-cell ">周四</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月14日</td>
-                        <td class="weekday-cell ">周五</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月14日</td>
+                            <td class="weekday-cell ">周五</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月15日</td>
-                        <td class="weekday-cell weekday-weekend">周六</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月15日</td>
+                            <td class="weekday-cell weekday-weekend">周六</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月16日</td>
-                        <td class="weekday-cell weekday-weekend">周日</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月16日</td>
+                            <td class="weekday-cell weekday-weekend">周日</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月17日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月17日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月18日</td>
-                        <td class="weekday-cell ">周二</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月18日</td>
+                            <td class="weekday-cell ">周二</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月19日</td>
-                        <td class="weekday-cell ">周三</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>7-8pm阅读直播课</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月19日</td>
+                            <td class="weekday-cell ">周三</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>7-8pm阅读直播课</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月20日</td>
-                        <td class="weekday-cell ">周四</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月20日</td>
+                            <td class="weekday-cell ">周四</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月21日</td>
-                        <td class="weekday-cell ">周五</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月21日</td>
+                            <td class="weekday-cell ">周五</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月22日</td>
-                        <td class="weekday-cell weekday-weekend">周六</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月22日</td>
+                            <td class="weekday-cell weekday-weekend">周六</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月23日</td>
-                        <td class="weekday-cell weekday-weekend">周日</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月23日</td>
+                            <td class="weekday-cell weekday-weekend">周日</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月24日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>阅读录播课</div></div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月24日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="course-list"><div class="course-item english"><span class="course-icon">🌍</span>9:50-10:20am久趣英语</div></div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="course-list"><div class="course-item reading"><span class="course-icon">📚</span>阅读录播课</div></div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月25日</td>
-                        <td class="weekday-cell ">周二</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月25日</td>
+                            <td class="weekday-cell ">周二</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月26日</td>
-                        <td class="weekday-cell ">周三</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月26日</td>
+                            <td class="weekday-cell ">周三</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月27日</td>
-                        <td class="weekday-cell ">周四</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月27日</td>
+                            <td class="weekday-cell ">周四</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月28日</td>
-                        <td class="weekday-cell ">周五</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月28日</td>
+                            <td class="weekday-cell ">周五</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月29日</td>
-                        <td class="weekday-cell weekday-weekend">周六</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月29日</td>
+                            <td class="weekday-cell weekday-weekend">周六</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="weekend-row">
-                        <td class="date-cell">08月30日</td>
-                        <td class="weekday-cell weekday-weekend">周日</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="weekend-row">
+                            <td class="date-cell">08月30日</td>
+                            <td class="weekday-cell weekday-weekend">周日</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                    <tr class="">
-                        <td class="date-cell">08月31日</td>
-                        <td class="weekday-cell ">周一</td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                        <td><div class="empty-cell">—</div></td>
-                    </tr>
+                        <tr class="">
+                            <td class="date-cell">08月31日</td>
+                            <td class="weekday-cell ">周一</td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                            <td><div class="empty-cell">—</div></td>
+                        </tr>
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <!-- 底部统计 -->
+        <!-- 底部统计（可折叠） -->
         <div class="stats-section">
-            <h2>📊 暑假课程统计</h2>
+            <div class="stats-header collapsed" onclick="toggleStats()">
+                <h2>📊 暑假课程统计</h2>
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="stats-content" id="stats-content">
             <div class="stats-bar">
                 <div class="stat-item">
                     <div class="stat-number">83</div>
@@ -2796,6 +3354,7 @@
                     <p>速写考级辅导、素描集训、央美辅导等<br>共 23 节课</p>
                 </div>
             </div>
+            </div>
         </div>
 
         <div class="footer">
@@ -2804,6 +3363,7 @@
     </div>
 
     <script>
+        // 周视图切换
         function showWeek(weekIndex) {
             const allDetails = document.querySelectorAll('.week-detail');
             allDetails.forEach(detail => {
@@ -2826,8 +3386,134 @@
             }
         }
 
+        // 学科总览折叠/展开
+        function toggleOverview() {
+            const content = document.getElementById('overview-content');
+            const header = document.querySelector('.foldable-header');
+
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                if (header) header.classList.add('collapsed');
+            } else {
+                content.classList.add('active');
+                if (header) header.classList.remove('collapsed');
+            }
+        }
+
+        // 月度课程表折叠/展开
+        function toggleMonth(monthId) {
+            const content = document.getElementById(monthId);
+            const header = content.parentElement.querySelector('.month-header');
+
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                if (header) header.classList.add('collapsed');
+            } else {
+                content.classList.add('active');
+                if (header) header.classList.remove('collapsed');
+            }
+        }
+
+        // 统计模块折叠/展开
+        function toggleStats() {
+            const content = document.getElementById('stats-content');
+            const header = document.querySelector('.stats-header');
+
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                if (header) header.classList.add('collapsed');
+            } else {
+                content.classList.add('active');
+                if (header) header.classList.remove('collapsed');
+            }
+        }
+
+        // 进度条更新
+        function updateProgress(id, delta, max) {
+            let current = parseInt(localStorage.getItem(id) || '0');
+            current += delta;
+            if (current < 0) current = 0;
+            if (current > max) current = max;
+
+            localStorage.setItem(id, current);
+
+            const percentage = Math.round((current / max) * 100);
+            document.getElementById(id + '-bar').style.width = percentage + '%';
+            document.getElementById(id + '-text').innerHTML = percentage + '%<br>(' + current + '/' + max + ')';
+        }
+
+        // 方框勾选
+        function toggleCheckbox(id) {
+            const box = document.getElementById(id);
+            const isChecked = box.classList.contains('checked');
+
+            if (isChecked) {
+                box.classList.remove('checked');
+                localStorage.setItem(id, 'false');
+            } else {
+                box.classList.add('checked');
+                localStorage.setItem(id, 'true');
+            }
+
+            // 更新相关进度
+            updateCheckboxProgress();
+        }
+
+        // 更新方框类进度
+        function updateCheckboxProgress() {
+            // 作文进度
+            const essay1 = document.getElementById('essay1').classList.contains('checked') ? 1 : 0;
+            const essay2 = document.getElementById('essay2').classList.contains('checked') ? 1 : 0;
+            const essayCurrent = essay1 + essay2;
+            const essayProgress = Math.round((essayCurrent / 2) * 100);
+            document.getElementById('essay-text').innerHTML = essayProgress + '%<br>(' + essayCurrent + '/2)';
+
+            // 必读进度
+            const book1 = document.getElementById('book1').classList.contains('checked') ? 1 : 0;
+            const book2 = document.getElementById('book2').classList.contains('checked') ? 1 : 0;
+            const book3 = document.getElementById('book3').classList.contains('checked') ? 1 : 0;
+            const bookCurrent = book1 + book2 + book3;
+            const bookProgress = Math.round((bookCurrent / 3) * 100);
+            document.getElementById('book-text').innerHTML = bookProgress + '%<br>(' + bookCurrent + '/3)';
+
+            // 自选进度
+            const self1 = document.getElementById('self1').classList.contains('checked') ? 1 : 0;
+            const self2 = document.getElementById('self2').classList.contains('checked') ? 1 : 0;
+            const self3 = document.getElementById('self3').classList.contains('checked') ? 1 : 0;
+            const selfCurrent = self1 + self2 + self3;
+            const selfProgress = Math.round((selfCurrent / 3) * 100);
+            document.getElementById('self-text').innerHTML = selfProgress + '%<br>(' + selfCurrent + '/3)';
+
+            // 手抄报进度
+            const handwork = document.getElementById('handwork').classList.contains('checked') ? 1 : 0;
+            document.getElementById('handwork-text').innerHTML = (handwork * 100) + '%<br>(' + handwork + '/1)';
+        }
+
+        // 页面加载时恢复进度
         document.addEventListener('DOMContentLoaded', function() {
-            // 当前周已经通过CSS active类设置好了
+            // 恢复进度条
+            const progressItems = ['reading25', 'recite', 'math', 'english', 'multi'];
+            const maxValues = [25, 17, 30, 30, 15];
+
+            progressItems.forEach((id, index) => {
+                const current = parseInt(localStorage.getItem(id) || '0');
+                const max = maxValues[index];
+                const percentage = Math.round((current / max) * 100);
+                document.getElementById(id + '-bar').style.width = percentage + '%';
+                document.getElementById(id + '-text').innerHTML = percentage + '%<br>(' + current + '/' + max + ')';
+            });
+
+            // 恢复方框状态
+            const checkboxItems = ['essay1', 'essay2', 'book1', 'book2', 'book3', 'self1', 'self2', 'self3', 'handwork'];
+            checkboxItems.forEach(id => {
+                const isChecked = localStorage.getItem(id) === 'true';
+                if (isChecked) {
+                    document.getElementById(id).classList.add('checked');
+                }
+            });
+
+            // 更新方框进度
+            updateCheckboxProgress();
         });
     </script>
 </body>
